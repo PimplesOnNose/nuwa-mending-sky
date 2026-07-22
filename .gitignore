@@ -1,0 +1,20 @@
+# Generated assets (recreated by scripts)
+audio/
+images/
+
+# Python
+__pycache__/
+*.pyc
+.pyvenv/
+.venv/
+.env
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.idea/
+.vscode/
+*.swp
+*.swo

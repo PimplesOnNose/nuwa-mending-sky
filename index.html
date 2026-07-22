@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>女娲补天 — Nuwa Mending the Sky</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Serif+SC:wght@300;400;600&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Starfield background -->
+  <div class="cosmos">
+    <div class="stars"></div>
+    <div class="stars2"></div>
+    <div class="stars3"></div>
+  </div>
+
+  <!-- Floating celestial orbs -->
+  <div class="orbs">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="orb orb-4"></div>
+  </div>
+
+  <main class="app">
+
+    <!-- Illustration dominates the viewport -->
+    <div class="painting-layer">
+      <img id="storyImage" src="images/page1.jpg" alt="" class="painting">
+      <div class="painting-frame"></div>
+    </div>
+
+    <!-- Content floats over the painting -->
+    <div class="story-panel" id="storyPanel">
+
+      <!-- Page indicator — vertical Chinese style -->
+      <div class="page-indicator">
+        <span class="page-curr" id="currentPage">壹</span>
+        <span class="page-dot"></span>
+        <span class="page-total" id="totalPages">拾</span>
+      </div>
+
+      <!-- Chapter label -->
+      <div class="chapter-label">
+        <span class="chapter-num" id="chapterNum">CHAPTER I</span>
+      </div>
+
+      <!-- Title: English (shown in EN mode) -->
+      <h1 class="title-en" id="storyTitle">The Peaceful World</h1>
+
+      <!-- Title: Hanzi + Pinyin together (shown in ZH mode) -->
+      <div class="title-zh-group" id="titleZhGroup">
+        <h1 class="title-hanzi" id="storyTitleHanzi">世界的开端</h1>
+        <p class="title-pinyin" id="storyTitlePinyin">Shì Jiè De Kāi Duān</p>
+      </div>
+
+      <!-- Decorative separator -->
+      <div class="separator">
+        <span class="sep-line"></span>
+        <span class="sep-gem">◆</span>
+        <span class="sep-line"></span>
+      </div>
+
+      <!-- Pinyin block — separate, for full ZH mode (below hanzi) -->
+      <div class="pinyin-block" id="contentPinyinWrap">
+        <p id="storyContentPinyin"></p>
+      </div>
+
+      <!-- Story text — EN paragraph / ZH hanzi -->
+      <article class="story-text" id="storyTextWrap">
+        <p id="storyText" class="story-paragraph"></p>
+      </article>
+
+    </div>
+
+    <!-- Navigation: subtle chevrons at edges -->
+    <nav class="nav">
+      <button id="prevBtn" class="nav-btn nav-prev" aria-label="Previous">
+        <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button id="nextBtn" class="nav-btn nav-next" aria-label="Next">
+        <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </nav>
+
+    <!-- Controls: floating glass bar -->
+    <div class="controls">
+
+      <!-- Language switch -->
+      <div class="lang-switch">
+        <button id="langEn" class="lang-btn active" data-lang="en">EN</button>
+        <button id="langZh" class="lang-btn" data-lang="zh">中文</button>
+      </div>
+
+      <!-- Playback controls -->
+      <div class="playback">
+        <button id="playBtn" class="play-btn" aria-label="Play">
+          <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M6 4h4v16H6zm8 0h4v16h-4z"/></svg>
+        </button>
+        <div class="progress-track" id="progressTrack">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <button id="autoBtn" class="auto-btn" aria-label="Autoplay">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="5 3 19 12 5 21 5 3" fill="currentColor" stroke="none"/>
+            <line x1="19" y1="5" x2="19" y2="19"/>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Credits -->
+    <footer class="credits">
+      <span>crafted with</span>
+      <a href="https://platform.stepfun.ai/" target="_blank" rel="noopener">StepFunAI</a>
+      <span class="dot">·</span>
+      <a href="https://pi.dev" target="_blank" rel="noopener">Pi</a>
+    </footer>
+
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

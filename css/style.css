@@ -1,0 +1,660 @@
+/* ==========================================================
+   女娲补天 — Nuwa Mending the Sky
+   "Celestial Tapestry" visual language
+   Ink on Cosmos: a canvas of darkness dotted with stars,
+   the story emerges from the Milky Way.
+   ========================================================== */
+
+/* ── Design Tokens ───────────────────────────────────────── */
+:root {
+  --cosmos:        #08080f;
+  --nebula:        #0e0d1a;
+  --ink:           #1a1820;
+  --parchment:     #f2ecdb;
+  --parchment-dim: rgba(242, 236, 219, 0.88);
+
+  --cinnabar:      #d44a3a;      /* seal red              */
+  --cinnabar-glow: rgba(212, 74, 58, 0.4);
+  --jade:          #3a7a5a;      /* goddess robes         */
+  --jade-glow:     rgba(58, 122, 90, 0.35);
+  --gold:          #d6a820;      /* divine celestial gold */
+  --gold-glow:     rgba(214, 168, 32, 0.35);
+  --sky:           #4a86b0;      /* heaven blue           */
+  --lavender:      #8b7aaa;      /* cosmic mist           */
+  --star:          rgba(242, 236, 219, 0.9);
+
+  --font-display-en:  'Cormorant Garamond', 'Georgia', serif;
+  --font-display-cn:  'ZCOOL KuaiLe', cursive;
+  --font-body:        'Cormorant Garamond', 'Noto Serif SC', serif;
+  --font-cn:          'Noto Serif SC', 'Georgia', serif;
+  --font-pinyin:      'Cormorant Garamond', 'Georgia', serif;
+  --font-ui:          'Cormorant Garamond', serif;
+}
+
+/* ── Reset ───────────────────────────────────────────────── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--cosmos);
+  color: var(--parchment);
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  user-select: none;
+}
+
+/* ── Cosmic Starfield ─────────────────────────────────────── */
+.cosmos {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(ellipse at 50% 30%, #14122a 0%, var(--nebula) 45%, var(--cosmos) 100%);
+  overflow: hidden;
+}
+
+.stars, .stars2, .stars3 {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+}
+
+.stars {
+  background-image:
+    radial-gradient(1.5px 1.5px at 20% 30%, rgba(255,255,255,0.8) 0%, transparent 100%),
+    radial-gradient(1px   1px   at 40% 70%, rgba(255,255,255,0.6) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 60% 20%, rgba(255,255,255,0.7) 0%, transparent 100%),
+    radial-gradient(1px   1px   at 80% 60%, rgba(255,255,255,0.5) 0%, transparent 100%),
+    radial-gradient(2px   2px   at 10% 80%, rgba(255,255,255,0.9) 0%, transparent 100%),
+    radial-gradient(1px   1px   at 90% 10%, rgba(255,255,255,0.5) 0%, transparent 100%),
+    radial-gradient(1px   1px   at 50% 50%, rgba(255,255,255,0.6) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 70% 85%, rgba(255,255,255,0.7) 0%, transparent 100%),
+    radial-gradient(1px   1px   at 30% 50%, rgba(255,255,255,0.4) 0%, transparent 100%);
+  animation: twinkle 6s ease-in-out infinite alternate;
+}
+.stars2 {
+  background-image:
+    radial-gradient(1px 1px at 15% 45%, rgba(180,200,255,0.5) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 55% 15%, rgba(255,220,180,0.6) 0%, transparent 100%),
+    radial-gradient(1px 1px at 75% 75%, rgba(200,180,255,0.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 35% 90%, rgba(180,220,255,0.5) 0%, transparent 100%);
+  animation: twinkle 9s ease-in-out 2s infinite alternate;
+}
+.stars3 {
+  background-image:
+    radial-gradient(1px 1px at 65% 40%, rgba(255,255,255,0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 25% 60%, rgba(255,255,255,0.4) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 85% 30%, rgba(212,168,32,0.6) 0%, transparent 100%),
+    radial-gradient(1px 1px at 45% 80%, rgba(139,122,170,0.5) 0%, transparent 100%);
+  animation: twinkle 12s ease-in-out 4s infinite alternate;
+}
+
+@keyframes twinkle {
+  0%   { opacity: 0.7; }
+  50%  { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+
+/* ── Celestial Orbs ───────────────────────────────────────── */
+.orbs {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.3;
+  animation: orbFloat 22s ease-in-out infinite;
+}
+
+.orb-1 {
+  width: 320px; height: 320px;
+  background: var(--cinnabar-glow);
+  top: -8%; right: -5%;
+  animation-delay: 0s;
+  animation-duration: 24s;
+}
+.orb-2 {
+  width: 400px; height: 400px;
+  background: var(--jade-glow);
+  bottom: -15%; left: -8%;
+  animation-delay: -8s;
+  animation-duration: 28s;
+}
+.orb-3 {
+  width: 240px; height: 240px;
+  background: var(--gold-glow);
+  top: 50%; left: 60%;
+  animation-delay: -14s;
+  animation-duration: 20s;
+}
+.orb-4 {
+  width: 200px; height: 200px;
+  background: rgba(74, 134, 176, 0.3);
+  top: 30%; right: 25%;
+  animation-delay: -6s;
+  animation-duration: 26s;
+}
+
+@keyframes orbFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%      { transform: translate(30px, -40px) scale(1.05); }
+  66%      { transform: translate(-20px, 20px) scale(0.95); }
+}
+
+/* ── App Shell ────────────────────────────────────────────── */
+.app {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Painting Layer — fills the full viewport ─────────────── */
+.painting-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.painting {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+  transition: opacity 1.4s ease, transform 12s ease;
+  will-change: opacity, transform;
+}
+
+.painting-layer.fading .painting {
+  opacity: 0;
+  transform: scale(1.07);
+}
+
+/* Inner vignette */
+.painting-frame {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 45%, transparent 20%, rgba(8,8,15,0.55) 100%),
+    linear-gradient(to bottom, rgba(8,8,15,0.15) 0%, transparent 28%, transparent 65%, rgba(8,8,15,0.65) 100%);
+  pointer-events: none;
+}
+
+/* ── Story Panel — Floating content card ──────────────────── */
+.story-panel {
+  position: relative;
+  z-index: 10;
+  margin-top: auto;          /* rest at the bottom */
+  padding: 28px 32px 0;
+  max-width: 680px;
+  width: 100%;
+}
+
+/* Glass effect — thin dark transparent card */
+.story-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(14, 13, 26, 0.5) 0%,
+    rgba(14, 13, 26, 0.82) 60%,
+    rgba(8, 8, 15, 0.95) 100%
+  );
+  backdrop-filter: blur(14px) saturate(0.85);
+  -webkit-backdrop-filter: blur(14px) saturate(0.85);
+  border-radius: 18px 18px 0 0;
+  border: 1px solid rgba(242, 236, 219, 0.08);
+  border-bottom: none;
+  z-index: -1;
+}
+
+/* Soft top glow */
+.story-panel::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 10%; right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(242,236,219,0.25), transparent);
+}
+
+/* ── Page Indicator — Vertical Chinese numerals ───────────── */
+.page-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 14px;
+  font-family: var(--font-display-cn);
+  color: var(--cinnabar);
+  opacity: 0.75;
+}
+
+.page-curr {
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  color: var(--cinnabar);
+  min-width: 1.5em;
+  text-align: center;
+  transition: all 0.5s ease;
+}
+
+.page-total {
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  opacity: 0.55;
+  transition: all 0.5s ease;
+}
+
+.page-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--cinnabar);
+  opacity: 0.6;
+}
+
+/* Chapter label */
+.chapter-label {
+  text-align: center;
+  margin-bottom: 10px;
+}
+.chapter-num {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  color: var(--lavender);
+  text-transform: uppercase;
+  opacity: 0.65;
+}
+
+/* ── Title (English) ──────────────────────────────────────── */
+.title-en {
+  font-family: var(--font-display-en);
+  font-size: 2.6rem;
+  font-weight: 500;
+  color: var(--parchment);
+  text-align: center;
+  line-height: 1.15;
+  letter-spacing: 0.02em;
+  transition: opacity 0.5s ease;
+}
+
+/* ── Title Group (Chinese: Hanzi + Pinyin) ───────────────── */
+.title-zh-group {
+  display: none;
+  text-align: center;
+}
+
+.title-hanzi {
+  font-family: var(--font-display-cn);
+  font-size: 2.5rem;
+  font-weight: 400;
+  color: var(--parchment);
+  line-height: 1.2;
+  letter-spacing: 0.06em;
+  margin-bottom: 6px;
+}
+
+.title-pinyin {
+  font-family: var(--font-pinyin);
+  font-size: 1.05rem;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--parchment);
+  opacity: 0.65;
+  letter-spacing: 0.1em;
+}
+
+/* ── Separator ────────────────────────────────────────────── */
+.separator {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 16px auto;
+  max-width: 260px;
+}
+
+.sep-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(242,236,219,0.25), transparent);
+}
+
+.sep-gem {
+  color: var(--cinnabar);
+  font-size: 0.5rem;
+  opacity: 0.7;
+}
+
+/* ── Pinyin Block (ZH mode — separate from Hanzi) ─────────── */
+.pinyin-block {
+  display: none;
+  margin-bottom: 14px;
+  padding: 14px 18px;
+  background: rgba(58, 122, 90, 0.1);
+  border-left: 2px solid var(--jade);
+  border-radius: 0 8px 8px 0;
+  max-width: fit-content;
+}
+
+.pinyin-block p {
+  font-family: var(--font-pinyin);
+  font-size: 0.95rem;
+  font-style: italic;
+  line-height: 1.95;
+  color: var(--parchment);
+  opacity: 0.75;
+  letter-spacing: 0.03em;
+}
+
+/* ── Story Text ───────────────────────────────────────────── */
+.story-text {
+  margin-bottom: 100px;   /* breathing room at bottom for nav */
+}
+
+.story-paragraph {
+  font-family: var(--font-body);
+  font-size: 1.22rem;
+  line-height: 1.85;
+  color: var(--parchment);
+  text-align: justify;
+  hyphens: auto;
+  animation: reveal 0.9s ease both;
+}
+
+/* soften a little in-centre glow */
+.story-paragraph::first-letter {
+  font-family: var(--font-display-en);
+  font-size: 3em;
+  float: left;
+  line-height: 0.78;
+  padding-right: 10px;
+  padding-top: 4px;
+  color: var(--gold);
+}
+
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Navigation Edges ─────────────────────────────────────── */
+.nav {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 14px;
+  pointer-events: none;
+}
+
+.nav-btn {
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(242,236,219,0.18);
+  background: rgba(14,13,26,0.35);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+  transition: all 0.35s ease;
+  color: var(--parchment);
+}
+
+.nav-btn svg { width: 20px; height: 20px; }
+
+.nav-btn:hover:not(:disabled) {
+  background: rgba(242,236,219,0.1);
+  border-color: rgba(242,236,219,0.4);
+  transform: scale(1.08);
+}
+
+.nav-btn:disabled {
+  opacity: 0.2;
+  cursor: default;
+}
+
+/* ── Controls — Floating glass bar at bottom ──────────────── */
+.controls {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 28px 22px;
+  background: linear-gradient(to top, rgba(8,8,15,0.95) 0%, rgba(8,8,15,0.6) 60%, transparent 100%);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Language toggle — pill */
+.lang-switch {
+  display: flex;
+  gap: 3px;
+  background: rgba(242, 236, 219, 0.1);
+  border-radius: 20px;
+  padding: 3px;
+  border: 1px solid rgba(242,236,219,0.14);
+}
+
+.lang-btn {
+  padding: 7px 18px;
+  border: none;
+  background: transparent;
+  color: var(--parchment);
+  font-family: var(--font-cn);
+  font-size: 0.85rem;
+  cursor: pointer;
+  border-radius: 17px;
+  transition: all 0.3s ease;
+  opacity: 0.68;
+  letter-spacing: 0.06em;
+}
+
+.lang-btn:hover { opacity: 1; }
+
+.lang-btn.active {
+  background: var(--parchment-dim);
+  color: var(--ink);
+  opacity: 1;
+  font-weight: 600;
+}
+
+/* Playback */
+.playback {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.play-btn {
+  width: 42px; height: 42px;
+  border: none;
+  background: var(--cinnabar);
+  color: var(--parchment);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px var(--cinnabar-glow);
+  flex-shrink: 0;
+}
+
+.play-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 30px var(--cinnabar-glow);
+}
+
+.play-btn svg { width: 18px; height: 18px; }
+
+.progress-track {
+  width: 120px;
+  height: 3px;
+  background: rgba(242,236,219,0.2);
+  border-radius: 2px;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(to right, var(--cinnabar), var(--gold));
+  width: 0%;
+  transition: width 0.1s linear;
+  border-radius: 2px;
+}
+
+.auto-btn {
+  width: 34px; height: 34px;
+  border: 1px solid rgba(242,236,219,0.25);
+  background: transparent;
+  color: var(--parchment);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+  opacity: 0.55;
+}
+
+.auto-btn:hover { opacity: 1; border-color: var(--parchment); }
+
+.auto-btn.active {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--cosmos);
+  opacity: 1;
+  box-shadow: 0 0 18px var(--gold-glow);
+}
+
+.auto-btn svg { width: 15px; height: 15px; }
+
+/* ── Credits ───────────────────────────────────────────────── */
+.credits {
+  position: fixed;
+  top: 18px;
+  right: 22px;
+  z-index: 20;
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  color: var(--parchment);
+  opacity: 0.35;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  letter-spacing: 0.07em;
+  transition: opacity 0.3s ease;
+}
+
+.credits:hover { opacity: 0.85; }
+
+.credits a {
+  color: var(--parchment);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s;
+}
+.credits a:hover { border-bottom-color: rgba(242,236,219,0.5); }
+
+.dot { opacity: 0.5; }
+
+/* ── Page Transition ───────────────────────────────────────── */
+.story-panel.transitioning { animation: fadeSlide 0.6s ease; }
+
+@keyframes fadeSlide {
+  0%   { opacity: 1; transform: translateY(0); }
+  38%  { opacity: 0; transform: translateY(-16px); }
+  62%  { opacity: 0; transform: translateY(16px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ── First-letter glow pulse (cosmic touch) ───────────────── */
+.story-paragraph:first-child::first-letter {
+  text-shadow: 0 0 40px var(--gold-glow);
+}
+
+/* ── Responsive ────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .story-panel {
+    padding: 22px 24px 0;
+    max-width: 100%;
+  }
+
+  .title-en  { font-size: 2.2rem; }
+  .title-hanzi { font-size: 2.1rem; }
+
+  .story-paragraph { font-size: 1.08rem; line-height: 1.75; }
+
+  .nav-btn { width: 42px; height: 42px; }
+  .nav { padding: 0 10px; }
+
+  .progress-track { width: 90px; }
+
+  .controls { padding: 14px 18px 20px; }
+}
+
+@media (max-width: 480px) {
+  .story-panel { padding: 18px 16px 0; }
+
+  .title-en  { font-size: 1.8rem; }
+  .title-hanzi { font-size: 1.7rem; }
+
+  .story-paragraph { font-size: 0.98rem; line-height: 1.7; }
+  .story-paragraph:first-child::first-letter { font-size: 2.6em; }
+
+  .progress-track { width: 70px; }
+
+  .controls {
+    flex-direction: column;
+    gap: 12px;
+    padding-bottom: 20px;
+  }
+
+  .playback { width: 100%; justify-content: center; }
+
+  .page-indicator { margin-bottom: 10px; }
+
+  .credits {
+    top: auto;
+    bottom: 80px;
+    right: 50%;
+    transform: translateX(50%);
+  }
+}
+
+/* ── Print ─────────────────────────────────────────────────── */
+@media print {
+  .cosmos, .orbs, .nav, .controls, .credits { display: none; }
+  body { overflow: visible; height: auto; background: white; color: black; }
+  .app { height: auto; }
+  .painting-layer { position: relative; height: 320px; }
+  .story-panel { position: relative; margin-top: 0; max-width: 100%; }
+  .story-panel::before { background: white; opacity: 0.5; }
+}
